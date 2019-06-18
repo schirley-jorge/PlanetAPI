@@ -38,6 +38,7 @@ class AddPlanet(tornado.web.RequestHandler):
 
         db = DBConnection()
         db.insert_planet(planet)
+        # returnar uma mensagem de sucesso
         self.write({'planet': planet})
 
 
@@ -51,11 +52,15 @@ class SearchPlanet(tornado.web.RequestHandler):
             planet = db.retrieve_planet(search_by, value)
 
             if not planet:
+                self.set_status(404)
                 self.finish("Planet not found")
                 return
 
             planet['films'] = fetch_films(planet['planet_name'])
             self.write({'planet': planet})
+        except tornado.web.MissingArgumentError as argError:
+            logger.exception("SearchPlanet::get")
+            raise argError
         except Exception as e:
             logger.exception("SearchPlanet::get")
             raise Exception('Error to search planet')
@@ -68,6 +73,7 @@ class DeletePlanet(tornado.web.RequestHandler):
             result = db.delete_planet(planet_id)
 
             if not result:
+                self.set_status(404)
                 self.finish("Planet not found")
                 return
 

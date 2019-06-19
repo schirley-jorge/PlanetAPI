@@ -36,7 +36,7 @@ API REST para manipulação de dados dos planetas do filme Star Wars.
 
 Descrição da API: [https://app.swaggerhub.com/apis/schirley.jorge/PlanetAPI/1.0.0#/]
 
-# Como usar
+# Arquivos fonte da aplicação:
     - main_handler.py
     - db_connection.py
     - swapi_connection.py

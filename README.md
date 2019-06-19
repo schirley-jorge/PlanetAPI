@@ -29,7 +29,7 @@ API REST para manipulação de dados dos planetas do filme Star Wars.
    - AWS_DEFAULT_REGION
 2. Executar o script **run_unit_tests.sh**:
     ```
-    . ./run_application.sh
+    . ./run_unit_tests.sh
     ```
     
 # Como usar
